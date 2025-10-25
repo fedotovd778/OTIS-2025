@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cmath>
-
+using std::cout;
+using std::cin;
 int main() {
     double temp_now;
     double temp_prev;
@@ -10,25 +11,25 @@ int main() {
     double A, B, C, D;
     int steps;
 
-    std::cout << "Введите начальную температуру (y) и подачу тепла (u): ";
-    std::cin >> temp_now >> heat_now;
+    cout << "Введите начальную температуру (y) и подачу тепла (u): ";
+    cin >> temp_now >> heat_now;
 
-    std::cout << "Введите коэффициенты A, B, C, D: ";
-    std::cin >> A >> B >> C >> D;
+    cout << "Введите коэффициенты A, B, C, D: ";
+    cin >> A >> B >> C >> D;
 
-    std::cout << "Введите количество шагов моделирования: ";
-    std::cin >> steps;
+    cout << "Введите количество шагов моделирования: ";
+    cin >> steps;
 
     temp_prev = temp_now;
 
-    std::cout << "\nЛинейная модель\n";
+    cout << "\nЛинейная модель\n";
     for (int k = 1; k <= steps; ++k) {
         temp_now = A * temp_prev + B * heat_now;
-        std::cout << "Шаг " << k << ": температура = " << temp_now << " °C\n";
+        cout << "Шаг " << k << ": температура = " << temp_now << " °C\n";
         temp_prev = temp_now;
     }
 
-    std::cout << "\nНелинейная модель\n";
+    cout << "\nНелинейная модель\n";
     temp_now = temp_prev;
     temp_prev = temp_now;
     heat_prev = heat_now;
@@ -38,16 +39,16 @@ int main() {
         temp_prev = temp_now;
         temp_now = temp_next;
         heat_prev = heat_now;
-        std::cout << "Шаг " << k << ": температура = " << temp_now << " C\n";
+        cout << "Шаг " << k << ": температура = " << temp_now << " C\n";
         
         if (k != steps) {
-            std::cout << "Введите новое значение подачи тепла (u): ";
-            std::cin >> heat_now;
+            cout << "Введите новое значение подачи тепла (u): ";
+            cin >> heat_now;
         }
     }
 
-    std::cout << "\nМоделирование завершено.\n";
-    std::cout << "Итоговая температура: " << temp_now << " C\n";
+    cout << "\nМоделирование завершено.\n";
+    cout << "Итоговая температура: " << temp_now << " C\n";
 
     return 0;
 }
